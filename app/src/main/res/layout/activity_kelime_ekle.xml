@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_marginTop="100dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_kelime_ekle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    tools:context="com.sabihamumcu.kelimekutusu.KelimeEkle">
+
+    <EditText
+        android:id="@+id/kelimeAdi"
+        android:padding="15dp"
+        android:hint="Yeni kelimeyi giriniz:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/kelimeTanimi"
+        android:padding="15dp"
+        android:hint="Kelimenin anlamini giriniz:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:onClick="KelimeyiEkle"
+        android:text="Ekle"
+        android:id="@+id/ekle"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

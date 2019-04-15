@@ -65,9 +65,6 @@ public class Send extends AppCompatActivity {
 
             File gpxfile = new File(root, fileName);
             FileWriter writer = new FileWriter(gpxfile);
-//            for(String str: gonderilecekListe) {
-//                writer.write(str);
-//            }
             for (int i = 0; i < gonderilecekListe.size(); i++) {
                 writer.write(gonderilecekListe.get(i));
                 writer.write("\n");

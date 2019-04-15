@@ -14,29 +14,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
     public void yeniKelime(View view) {
-        Intent intent=new Intent(MainActivity.this,KelimeEkle.class);
+        Intent intent = new Intent(MainActivity.this, KelimeEkle.class);
         startActivity(intent);
     }
 
     public void testEt(View view) {
-        Intent intent=new Intent(MainActivity.this,TestEt.class);
+        Intent intent = new Intent(MainActivity.this, TestEt.class);
         startActivity(intent);
     }
 
     public void listele(View view) {
-        Intent intent=new Intent(MainActivity.this,Listele.class);
+        Intent intent = new Intent(MainActivity.this, Listele.class);
         startActivity(intent);
     }
-    public void Gonder(View view){
-        Intent intent=new Intent(MainActivity.this,Send.class);
+
+    public void Gonder(View view) {
+        Intent intent = new Intent(MainActivity.this, Send.class);
         startActivity(intent);
-
-
     }
 
 }

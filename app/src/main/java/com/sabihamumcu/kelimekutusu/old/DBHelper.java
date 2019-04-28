@@ -1,4 +1,4 @@
-package com.sabihamumcu.kelimekutusu;
+package com.sabihamumcu.kelimekutusu.old;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by sabis on 2/20/2017.
  */
-
+//before room
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "words.db";

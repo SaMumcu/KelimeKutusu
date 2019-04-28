@@ -1,18 +1,24 @@
 package com.sabihamumcu.kelimekutusu;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.sabihamumcu.kelimekutusu.model.Word;
+import com.sabihamumcu.kelimekutusu.viewmodel.WordViewModel;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,14 +31,14 @@ import java.util.Map;
 public class Send extends AppCompatActivity {
 
     ArrayList<String> gonderilecekListe = new ArrayList<>();
-    DBHelper mydb;
-    Map<String, String> mHashMap;
     Button b;
+    private WordViewModel wordViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
+        wordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
 
         b = (Button) findViewById(R.id.anaEkranaDon);
         b.setOnClickListener(new View.OnClickListener() {
@@ -42,20 +48,21 @@ public class Send extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        mHashMap = new HashMap<String, String>();
 
-        mydb = new DBHelper(this);
-        File path = Send.this.getDatabasePath("words.db");
-        mHashMap = mydb.getAllWords();
-        if (mHashMap.isEmpty()) {
-            Toast.makeText(this, "Bos bir kelime kutunuz var.", Toast.LENGTH_SHORT).show();
-        } else {
-            for (Map.Entry<String, String> entry : mHashMap.entrySet()) {
-                String a = entry.getKey();
-                String b = entry.getValue();
-                gonderilecekListe.add(a + "\t\t\t" + b);
+        File path = Send.this.getDatabasePath("db_words.db");
+        wordViewModel.getWords().observe(this, new Observer<List<Word>>() {
+            @Override
+            public void onChanged(@Nullable List<Word> words) {
+                for (int i = 0; i < words.size(); i++) {
+                    gonderilecekListe.add(words.get(i).getWord() + " " + words.get(i).getDescription());
+                }
+                if (gonderilecekListe.isEmpty()) {
+                    Toast.makeText(Send.this, "You have an empty word box.", Toast.LENGTH_SHORT).show();
+                }
             }
-        }
+        });
+
+
         try {
             String fileName = "output.txt";
             File root = new File(Environment.getExternalStorageDirectory(), "testDir");
@@ -75,11 +82,6 @@ public class Send extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        MobileAds.initialize(getApplicationContext(), "");
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
     }
 

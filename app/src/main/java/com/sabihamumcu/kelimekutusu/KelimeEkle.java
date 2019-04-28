@@ -1,5 +1,6 @@
 package com.sabihamumcu.kelimekutusu;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -8,37 +9,38 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.sabihamumcu.kelimekutusu.model.Word;
+import com.sabihamumcu.kelimekutusu.viewmodel.WordViewModel;
+
 public class KelimeEkle extends AppCompatActivity {
 
-    DBHelper mydb;
     EditText kelime;
     EditText tanim;
+    private WordViewModel wordViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kelime_ekle);
 
-        kelime=(EditText) findViewById(R.id.kelimeAdi);
-        tanim=(EditText) findViewById(R.id.kelimeTanimi);
-
-
-        mydb=new DBHelper(this);
-
+        kelime = (EditText) findViewById(R.id.kelimeAdi);
+        tanim = (EditText) findViewById(R.id.kelimeTanimi);
+        wordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
 
     }
 
 
-    public void KelimeyiEkle(View view) {
-        if(isEmpty(kelime) || isEmpty(tanim)){
-            Toast.makeText(this,"Boşlukları doldurunuz.",Toast.LENGTH_SHORT).show();
+    public void addWord(View view) {
+        if (isEmpty(kelime) || isEmpty(tanim)) {
+            Toast.makeText(this, "Boşlukları doldurunuz.", Toast.LENGTH_SHORT).show();
 
-        }
-        else{
-            if(mydb.insertWords(kelime.getText().toString(),tanim.getText().toString())){
-                Toast.makeText(this,"Kelime ve tanim basariyla eklendi.",Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(this,"Kelime ve tanim eklerken hata oluştu.",Toast.LENGTH_SHORT).show();
+        } else {
+            if (kelime.getText().toString() != null && tanim.getText().toString() != null) {
+                Toast.makeText(this, "Kelime ve tanim basariyla eklendi.", Toast.LENGTH_SHORT).show();
+                Word word = new Word(kelime.getText().toString(), tanim.getText().toString());
+                wordViewModel.insertWord(word);
+            } else {
+                Toast.makeText(this, "Kelime ve tanim eklerken hata oluştu.", Toast.LENGTH_SHORT).show();
             }
             kelime.setText("");
             tanim.setText("");
@@ -46,20 +48,8 @@ public class KelimeEkle extends AppCompatActivity {
     }
 
 
-
-    private boolean isEmpty(EditText editText){
-        return editText.getText().toString().trim().length()==0;
+    private boolean isEmpty(EditText editText) {
+        return editText.getText().toString().trim().length() == 0;
     }
 
-//    public void KelimeyiSil(View view) {
-//        SQLiteDatabase db = mydb.getReadableDatabase();
-//        Cursor res =  db.rawQuery( "select * from words", null );
-//        res.moveToFirst();
-//
-//        for(int i=0;i<5;i++){
-//            db.delete("words",
-//                    "id = ? ",
-//                    new String[]{Integer.toString(i)});
-//        }
-//    }
 }

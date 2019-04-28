@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import java.util.Random;
 
 public class TestEt extends AppCompatActivity {
 
+    LinearLayout mLinearLayout;
     Button b1, b2, b3, b4;
     TextView t1;
     Random rand = new Random();
@@ -38,7 +41,7 @@ public class TestEt extends AppCompatActivity {
         setContentView(R.layout.activity_test_et);
         wordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
         t1 = (TextView) findViewById(R.id.testKelimesi);
-
+        mLinearLayout = findViewById(R.id.activity_test_et);
         b1 = (Button) findViewById(R.id.f);
         b2 = (Button) findViewById(R.id.s);
         b3 = (Button) findViewById(R.id.t);
@@ -59,9 +62,11 @@ public class TestEt extends AppCompatActivity {
                 final ArrayList<String> wrongAnswers = new ArrayList<String>();
 
                 if (your_array_list.isEmpty()) {
-                    Toast.makeText(TestEt.this, "You have an empty word box.", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(mLinearLayout, "You have an empty word box.", Snackbar.LENGTH_INDEFINITE);
+                    snackbar.show();
                 } else if (your_array_list.size() < 5) {
-                    Toast.makeText(TestEt.this, "You must have at least 5 words to test yourself.", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(mLinearLayout, "You must have at least 5 words to test yourself.", Snackbar.LENGTH_INDEFINITE);
+                    snackbar.show();
                 } else {
 
                     final Handler h = new Handler();
@@ -84,7 +89,8 @@ public class TestEt extends AppCompatActivity {
                             public void onClick(View view) {
                                 if (view == buttons.get(indexes.get(0))) {
                                     Log.v(TAG, "verilen cevap indeksi=" + view.getId());
-                                    Toast.makeText(TestEt.this, "Dogru bildiniz.", Toast.LENGTH_SHORT).show();
+                                    Snackbar snackbar = Snackbar.make(mLinearLayout, "Dogru bildiniz.", Snackbar.LENGTH_INDEFINITE);
+                                    snackbar.show();
                                     //view.setBackgroundColor(Color.GREEN);
                                     //cevap.setBackgroundColor(Color.GREEN);
                                     forAnswers.clear();
@@ -93,7 +99,8 @@ public class TestEt extends AppCompatActivity {
                                     Log.v(TAG, "indexes büyüklüğü=" + indexes.size());
 
                                     if (repeatedWordControlList.size() == descriptionList.size()) {
-                                        Toast.makeText(TestEt.this, "Testi bitirdiniz.", Toast.LENGTH_SHORT).show();
+                                        Snackbar snackbar2 = Snackbar.make(mLinearLayout, "Testi bitirdiniz.", Snackbar.LENGTH_INDEFINITE);
+                                        snackbar2.show();
                                         h.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
@@ -119,7 +126,8 @@ public class TestEt extends AppCompatActivity {
                                     Log.v(TAG, "indexes büyüklüğü=" + indexes.size());
 
                                     if (repeatedWordControlList.size() == descriptionList.size()) {
-                                        Toast.makeText(TestEt.this, "Testi bitirdiniz.", Toast.LENGTH_SHORT).show();
+                                        Snackbar snackbar2 = Snackbar.make(mLinearLayout, "Testi bitirdiniz.", Snackbar.LENGTH_INDEFINITE);
+                                        snackbar2.show();
                                         h.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {

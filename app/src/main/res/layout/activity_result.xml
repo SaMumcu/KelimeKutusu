@@ -7,13 +7,13 @@
     android:id="@+id/activity_sonuc"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sabihamumcu.kelimekutusu.Sonuc">
+    tools:context="com.sabihamumcu.kelimekutusu.Result">
 
 
     <TextView
         android:textSize="20sp"
         android:layout_marginTop="50dp"
-        android:text="Yanlış cevapladığınız kelimeler"
+        android:text="@string/wrong_answered_words"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -32,7 +32,7 @@
         </ListView>
 
         <Button
-            android:text="Test"
+            android:text="@string/test"
             android:layout_gravity="center"
             android:id="@+id/testeDon"
             android:layout_width="wrap_content"

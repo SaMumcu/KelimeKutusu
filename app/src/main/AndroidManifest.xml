@@ -23,13 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".KelimeEkle">
+        <activity android:name=".AddWord">
         </activity>
-        <activity android:name=".TestEt">
+        <activity android:name=".Testing">
         </activity>
-        <activity android:name=".Listele">
+        <activity android:name=".ListResult">
         </activity>
-        <activity android:name=".Sonuc">
+        <activity android:name=".Result">
         </activity>
         <activity android:name=".Send">
         </activity>

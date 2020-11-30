@@ -8,29 +8,29 @@
     android:layout_marginTop="100dp"
     android:gravity="center|top"
     android:orientation="vertical"
-    tools:context="com.sabihamumcu.kelimekutusu.KelimeEkle">
+    tools:context="com.sabihamumcu.kelimekutusu.AddWord">
 
     <EditText
-        android:id="@+id/kelimeAdi"
+        android:id="@+id/word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Yeni kelimeyi giriniz:"
+        android:hint="@string/please_add_new_word"
         android:padding="15dp"/>
 
     <EditText
-        android:id="@+id/kelimeTanimi"
+        android:id="@+id/wordDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Kelimenin anlamini giriniz:"
+        android:hint="@string/please_add_description"
         android:padding="15dp"/>
 
     <Button
-        android:id="@+id/ekle"
+        android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:onClick="addWord"
-        android:text="Ekle"/>
+        android:text="@string/add"/>
 
 
 </LinearLayout>

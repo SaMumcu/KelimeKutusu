@@ -8,11 +8,11 @@
     android:gravity="center|top"
     android:orientation="vertical"
     android:layout_marginTop="100dp"
-    tools:context="com.sabihamumcu.kelimekutusu.TestEt">
+    tools:context="com.sabihamumcu.kelimekutusu.Testing">
 
     <TextView
         android:textSize="25sp"
-        android:text="Test Kelimesi"
+        android:text="@string/testing_word"
         android:id="@+id/testKelimesi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

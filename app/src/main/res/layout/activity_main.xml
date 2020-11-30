@@ -14,7 +14,7 @@
         android:layout_marginTop="60dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kelime Kutusu"/>
+        android:text="@string/word_box"/>
 
     <LinearLayout
         android:layout_weight="1"
@@ -25,26 +25,26 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:onClick="testEt"
-            android:text="Test Et"
+            android:onClick="testing"
+            android:text="@string/test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Button
-            android:onClick="yeniKelime"
-            android:text="Ekle"
+            android:onClick="addWord"
+            android:text="@string/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Button
-            android:onClick="listele"
-            android:text="Listele"
+            android:onClick="list"
+            android:text="@string/list_result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
     <Button
-        android:onClick="Gonder"
-        android:text="Kelime Kutunu Gönder"
+        android:onClick="send"
+        android:text="@string/send_word_box"
         android:layout_marginBottom="75dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

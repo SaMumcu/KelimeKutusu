@@ -1,4 +1,27 @@
 <resources>
     <string name="app_name">KelimeKutusu</string>
     <string name="banner_ad_unit_id">ca-app-pub-2173037546971593/2474639865</string>
+
+
+    <string name="word_and_description_added_successfully">Kelime ve tanim basariyla eklendi.</string>
+    <string name="please_add_new_word">Yeni kelimeyi giriniz:</string>
+    <string name="please_add_description">Kelimenin anlamini giriniz:</string>
+    <string name="add">Ekle</string>
+    <string name="please_add_searching_word">Aranacak kelimeyi giriniz..</string>
+    <string name="word_box">Kelime Kutusu</string>
+    <string name="test">Test Et</string>
+    <string name="list_result">Listele</string>
+    <string name="send_word_box">Kelime Kutunu Gönder</string>
+    <string name="wrong_answered_words">Yanlış cevapladığınız kelimeler</string>
+    <string name="testing_word">Test Kelimesi</string>
+    <string name="error_occurred_when_adding_word_and_description">Kelime ve tanim eklerken hata oluştu.</string>
+    <string name="please_fill_blanks">Boşlukları doldurunuz.</string>
+    <string name="do_you_want_to_delete_this_word">Bu kelimeyi silmek mi istiyorsun?</string>
+    <string name="update_or_delete">Değiştir yada Sil</string>
+    <string name="word_is_deleted">Word is deleted</string>
+    <string name="you_have_an_empty_word_box">You have an empty word box.</string>
+    <string name="you_must_have_atleast_5_words_to_test_yourself">You must have atleast 5 words to test yourself.</string>
+    <string name="delete">Sil</string>
+    <string name="close">Close</string>
+    <string name="word_is_deleted_">Word is deleted: </string>
 </resources>
